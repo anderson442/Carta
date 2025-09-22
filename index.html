@@ -1,0 +1,129 @@
+<!doctype html>
+
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Carta virtual — Flores y Amor</title>
+  <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#fffbea; /* fondo amarillo suave */
+      --card:#ffffff;
+      --accent:#e6b800; /* amarillo dorado */
+      --muted:#6b6b6b;
+      --shadow: 0 8px 24px rgba(11,11,27,0.12);
+      --radius:16px;
+      --flower:#f7d94c;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;min-height:100vh;background:linear-gradient(180deg,var(--bg),#fff);font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      display:flex;align-items:center;justify-content:center;padding:32px;overflow:hidden;
+    }
+    .container{max-width:800px;width:100%;position:relative;z-index:2}
+    .intro, .letter-section{background:#fff;padding:28px;border-radius:var(--radius);box-shadow:var(--shadow);animation:fadeIn 1s ease}
+    .intro{text-align:center}
+    .intro h1{font-family:Parisienne,serif;font-size:42px;color:var(--accent);margin-bottom:10px}
+    .intro p{color:var(--muted);margin:0 0 20px;font-size:16px}
+    .btn{display:inline-block;padding:12px 18px;border-radius:10px;background:var(--accent);color:white;text-decoration:none;border:none;font-weight:600;cursor:pointer;transition:transform .3s}
+    .btn:hover{transform:scale(1.05)}
+    .letter-section{margin-top:20px;display:none}
+    .card{background:var(--card);border-radius:var(--radius);padding:34px;box-shadow:var(--shadow);min-height:380px;position:relative;animation:slideUp 1s ease;border:3px solid var(--accent)}
+    .header{display:flex;align-items:center;gap:12px}
+    .seal{width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,var(--accent),#d4a000);color:white;font-weight:700;font-family:Parisienne,serif;font-size:18px;box-shadow:0 6px 16px rgba(123,0,0,0.18)}
+    .meta{flex:1}
+    .meta h1{margin:0;font-family:Parisienne,serif;font-size:30px;color:var(--accent)}
+    .meta p{margin:0;color:var(--muted);font-size:13px}
+    .letter-body{margin-top:18px;line-height:1.6;color:#222}
+    .signature{margin-top:26px;display:flex;align-items:center;gap:12px}
+    .signature .name{font-family:Parisienne,serif;font-size:22px;color:var(--accent)}
+    .decoration{position:absolute;right:-40px;bottom:-40px;font-size:120px;opacity:0.06;font-family:Parisienne,serif;color:var(--accent)}
+    .hidden{display:none!important}/* Animaciones */
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes slideUp{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:translateY(0)}}
+@keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-15px)}100%{transform:translateY(0)}}
+@keyframes rotate{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+
+/* Flores */
+.flower{position:absolute;width:60px;height:60px;background:var(--flower);border-radius:50%;opacity:0.9;animation:float 6s ease-in-out infinite;box-shadow:0 0 10px rgba(0,0,0,0.1)}
+.flower::before,.flower::after{content:"";position:absolute;width:60px;height:60px;background:var(--flower);border-radius:50%}
+.flower::before{top:-30px;left:0}
+.flower::after{left:30px;top:0}
+.flower .center{position:absolute;width:20px;height:20px;background:#7b6000;border-radius:50%;top:20px;left:20px}
+.flower.one{top:10%;left:5%;animation-delay:0s}
+.flower.two{top:20%;right:10%;animation-delay:2s}
+.flower.three{bottom:15%;left:15%;animation-delay:4s}
+.flower.four{bottom:10%;right:5%;animation-delay:1s}
+
+/* Lemas */
+.slogan{margin-top:20px;font-family:Parisienne,serif;font-size:22px;color:#b37d00;text-align:center;animation:fadeIn 2s ease}
+
+  </style>
+</head>
+<body>
+  <!-- Flores decorativas -->
+  <div class="flower one"><div class="center"></div></div>
+  <div class="flower two"><div class="center"></div></div>
+  <div class="flower three"><div class="center"></div></div>
+  <div class="flower four"><div class="center"></div></div>  <div class="container">
+    <div class="intro" id="intro">
+      <h1>Bienvenido a tu Carta </h1>
+      <p>Presiona el botón para abrir tu carta .</p>
+      <button class="btn" id="openLetterBtn">Abrir carta</button>
+      <div class="slogan">🌼 "El amor florece como un campo de girasoles" 🌼</div>
+    </div><div class="letter-section" id="letterSection">
+  <div class="card" id="cardPreview">
+    <div class="header">
+      <div class="seal">AS</div>
+      <div class="meta">
+        <h1 id="pv-subject">Una carta de amor</h1>
+        <p id="pv-to">Para: La niña que cambio mi vida</p>
+      </div>
+    </div>
+    <div class="letter-body" id="pv-body">
+      <p style="margin-top:0;color:var(--muted);font-size:13px" id="pv-from">De: Anderson sejas coca</p>
+      <div id="pv-message">
+        <p>Hola,</p>
+        <p>
+
+Quiero recordarte lo mucho que te amo. Sé que no siempre es fácil, que hemos pasado por momentos difíciles y que a veces la distancia duele, pero nada de eso cambia lo que siento por ti.
+
+Ahora que nuestro bebé viene en camino, mi corazón se llena de esperanza y alegría. Tú y nuestro pequeño son mi mayor motivo para seguir adelante. Prometo estar contigo en cada paso, apoyarte, cuidarte y amarte siempre.
+
+No estás sola en esta vida,  juntos saldremos adelante. Eres mi todo, y cada día le agradezco a la vida por tenerte..</p>
+        <p>Con todo mi cariño,</p>
+        <p class="name">Anderson</p>
+      </div>
+    </div>
+    <div class="signature">
+      <div style="width:60px;height:60px;border-radius:10px;background:#fff;display:flex;align-items:center;justify-content:center;border:2px solid var(--accent)">🌻</div>
+      <div>
+        <div class="name" id="pv-sign">Anderson</div>
+        <div class="muted">Remitente</div>
+      </div>
+    </div>
+    <div class="decoration">✦</div>
+  </div>
+  <div style="text-align:center;margin-top:20px">
+    <button class="btn" id="closeLetterBtn">Cerrar carta</button>
+    <div class="slogan">💛 "Amar es florecer juntos bajo la luz del sol" 💛</div>
+  </div>
+</div>
+
+  </div>  <script>
+    const intro = document.getElementById('intro');
+    const letterSection = document.getElementById('letterSection');
+    const openLetterBtn = document.getElementById('openLetterBtn');
+    const closeLetterBtn = document.getElementById('closeLetterBtn');
+
+    openLetterBtn.addEventListener('click', ()=>{
+      intro.classList.add('hidden');
+      letterSection.style.display='block';
+    });
+    closeLetterBtn.addEventListener('click', ()=>{
+      letterSection.style.display='none';
+      intro.classList.remove('hidden');
+    });
+  </script></body>
+</html>
